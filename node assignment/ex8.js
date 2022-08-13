@@ -1,7 +1,4 @@
 var fs = require('fs');
-// var fileName = process.argv.slice(2);
-
-// // syschronous
 
 var readMe= fs.readFile("num.txt",'utf8' ,function(err,data){
     if(err) console.log('error', err);
