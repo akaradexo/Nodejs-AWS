@@ -1,12 +1,12 @@
 // #2 
 // Read a file
-var fs = require('fs');
-var fileName = process.argv.slice(2);
+// var fs = require('fs');
+// var fileName = process.argv.slice(2);
 
-// syschronous
+// // syschronous
 
-var readMe= fs.readFileSync(fileName.toString(),'utf8');
-console.log(readMe);
+// var readMe= fs.readFileSync(fileName.toString(),'utf8');
+// console.log(readMe);
 
 //write a file
 // fs.writeFileSync('writeMe.txt',readMe);
@@ -19,5 +19,6 @@ console.log(readMe);
 //      });
 //    });
 // console.log(readMe);
+
 
 
