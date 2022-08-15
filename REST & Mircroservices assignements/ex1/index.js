@@ -9,7 +9,8 @@ const itemsRouter = require('./routes/items');
 
 // connection to db
 
-mongoose.connect('mongodb+srv://todo2:todo2@test.hbdyljx.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://todo2:todo2@test.hbdyljx.mongodb.net/?retryWrites=true&w=majority');
+mongoose.Promise=global.Promise;
 
 app.use(bodyParser.json());
 // default URL to API
@@ -18,6 +19,12 @@ app.use(bodyParser.json());
 // });
 
 app.use('/inventory', itemsRouter);
+
+//error handeling middle ware
+
+app.use(function(err,req,res,next){
+    res.status(422).send({erro:err.message})
+})
 
 
 //listen to port

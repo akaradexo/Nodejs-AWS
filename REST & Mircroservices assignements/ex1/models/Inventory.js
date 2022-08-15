@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const inventorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: [true,'Name field is required']
     },
     quantity: {
         type: Number,
-        required: true
+        required: [true,'Quantity field is required']
     }
 })
 
