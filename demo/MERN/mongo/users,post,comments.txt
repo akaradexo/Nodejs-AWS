@@ -1,0 +1,102 @@
+db.posts.insertMany([
+    {
+        username:"GoodGuyGreg",
+        title:"Passes out at party",
+        body:"Wakes up early and cleans house"
+    },
+    {
+        username:"GoodGuyGreg",
+        title:"Steals your identity",
+        body:"Raises your credit score"
+    },
+    {
+        username:"GoodGuyGreg",
+        title:"Reports a bug in your code",
+        body:"Sends you a Pull Request"
+    },
+    {
+        username:"ScumbagSteve",
+        title:"Borrows something",
+        body:"Sells it"
+    },
+    {
+        username:"ScumbagSteve",
+        title:"Borrows everthing",
+        body:"The end"
+    },
+    {
+        username:"ScumbagSteve",
+        title:"Forks your repo on github",
+        body:"Sets to private"
+    }
+])
+
+db.users.insertMany([
+    {
+        username:"GoodGuyGreg",
+        first_name:"Good Guy",
+        last_name:"Greg"
+    },
+    {
+        username:"ScumbagSteve",
+        full_name:{
+            first:"Scumbag",
+            last:"Steve"
+        }
+    }
+])
+
+{
+  "_id": {
+    "$oid": "62e7bab54237124d3cccb6a8"
+  },
+  "username": "GoodGuyGreg",
+  "title": "Reports a bug in your code",
+  "body": "Sends you a Pull Request"
+}
+
+db.comments.insertMany([
+    {
+        username:"GoodGuyGreg",
+        comment:"Hope you got a good deal!",
+        post:ObjectId("62e7bab54237124d3cccb6a9")
+    },
+    {
+        username:"GoodGuyGreg",
+        comment:"What's mine is yours!",
+        post:ObjectId("62e7bab54237124d3cccb6aa")
+    },
+    {
+        username:"GoodGuyGreg",
+        comment:"Don't voilate the licensing agreement!",
+        post:ObjectId("62e7bab54237124d3cccb6ab")
+    },
+    {
+        username:"ScumbagSteve",
+        comment:"It still isn;t clean",
+        post:ObjectId("62e7bab54237124d3cccb6a6")
+    },
+    {
+        username:"ScumbagSteve",
+        comment:"Denied your PR cause i found a hack",
+        post:ObjectId("62e7bab54237124d3cccb6a8")
+    },
+
+])
+
+
+ db.posts.aggregate([
+    {
+        $lookup:{
+            from:"comments",
+            localField:"_id",
+            foreignField:"post",
+            as:"titles"
+        }
+    },
+    {
+        $match:{
+            title:"Reports a bug in your code"
+        }
+    }
+])

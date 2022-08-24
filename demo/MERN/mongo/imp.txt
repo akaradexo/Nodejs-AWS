@@ -1,0 +1,6 @@
+mongosh "mongodb+srv://test.hbdyljx.mongodb.net/test"  --username test --password Test
+
+
+
+
+mongoimport --host  ac-wxj8xie-shard-00-01.hbdyljx.mongodb.net:27017 --db population --collection zipcodes --type json --file c:/zip.json  --authenticationDatabase admin --ssl --username test --password Test

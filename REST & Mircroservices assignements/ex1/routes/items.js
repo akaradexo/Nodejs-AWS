@@ -7,14 +7,14 @@ const Inventory = require("../models/Inventory");
 // HTTP methods ↓↓ starts here.
 
 // READ all item
-router.get('/', function (req, res) {
+router.get('/', function (req, res,next) {
     Inventory.find({}).then(function(item){
         res.send(item);
     }).catch(next);
 });
 
 // READ one item
-router.get('/:name', function (req, res) {
+router.get('/:name', function (req, res,next) {
     Inventory.findOne({'name':req.params.name}).then(function(item){
         res.send(item);
     }).catch(next);
